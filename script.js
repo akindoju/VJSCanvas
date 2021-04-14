@@ -45,21 +45,21 @@ const moveCenterObj = () => {
   }
 
   //ball stop
-  //   if (centerObj.x + centerObj.size > canvas.width) {
-  //     centerObj.x = canvas.width - centerObj.size;
-  //   }
+  if (centerObj.x + centerObj.size > canvas.width) {
+    centerObj.x = canvas.width - centerObj.size;
+  }
 
-  //   if (centerObj.x - centerObj.size < 0) {
-  //     centerObj.x = centerObj.size;
-  //   }
+  if (centerObj.x - centerObj.size < 0) {
+    centerObj.x = centerObj.size;
+  }
 
-  //   if (centerObj.y + centerObj.size > canvas.height) {
-  //     centerObj.y = canvas.height - centerObj.size;
-  //   }
+  if (centerObj.y + centerObj.size > canvas.height) {
+    centerObj.y = canvas.height - centerObj.size;
+  }
 
-  //   if (centerObj.y - centerObj.size < 0) {
-  //     centerObj.y = centerObj.size;
-  //   }
+  if (centerObj.y - centerObj.size < 0) {
+    centerObj.y = centerObj.size;
+  }
 };
 
 const draw = () => {
@@ -78,6 +78,7 @@ const update = () => {
 
 update();
 
+//keyboard buttons
 // const keyDown = (event) => {
 //   if (event.keyCode == '39') {
 //     centerObj.dx = centerObj.movementUnit;
