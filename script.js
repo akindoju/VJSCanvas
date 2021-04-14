@@ -1,7 +1,7 @@
 const upBtn = document.getElementById('up');
 const downBtn = document.getElementById('down');
 const leftBtn = document.getElementById('left');
-const DownBtn = document.getElementById('right');
+const rightBtn = document.getElementById('right');
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -28,6 +28,23 @@ const moveCenterObj = () => {
   centerObj.y += centerObj.dy;
 
   //wall detection
+
+  //ball bounce
+  //   if (
+  //     centerObj.x + centerObj.size > canvas.width ||
+  //     centerObj.x - centerObj.size < 0
+  //   ) {
+  //     centerObj.dx *= -1;
+  //   }
+
+  //   if (
+  //     centerObj.y + centerObj.size > canvas.height ||
+  //     centerObj.y - centerObj.size < 0
+  //   ) {
+  //     centerObj.dy *= -1;
+  //   }
+
+  //ball stop
   if (centerObj.x + centerObj.size > canvas.width) {
     centerObj.x = canvas.width - centerObj.size;
   }
@@ -89,6 +106,34 @@ document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
 
 rightBtn.addEventListener('click', () => {
-  centerObj.dx = centerObj.movementUnit;
-  console.log(centerObj.dx);
+  centerObj.x += centerObj.movementUnit * 8;
 });
+
+leftBtn.addEventListener('click', () => {
+  centerObj.x -= centerObj.movementUnit * 8;
+});
+
+upBtn.addEventListener('click', () => {
+  centerObj.y -= centerObj.movementUnit * 8;
+});
+
+downBtn.addEventListener('click', () => {
+  centerObj.y += centerObj.movementUnit * 8;
+});
+
+//continuous movement
+// rightBtn.addEventListener('click', () => {
+//   centerObj.dx = centerObj.movementUnit;
+// });
+
+// leftBtn.addEventListener('click', () => {
+//   centerObj.dx = -centerObj.movementUnit;
+// });
+
+// upBtn.addEventListener('click', () => {
+//   centerObj.dy = -centerObj.movementUnit;
+// });
+
+// downBtn.addEventListener('click', () => {
+//   centerObj.dy = centerObj.movementUnit;
+// });
