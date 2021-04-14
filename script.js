@@ -45,21 +45,21 @@ const moveCenterObj = () => {
   }
 
   //ball stop
-  if (centerObj.x + centerObj.size > canvas.width) {
-    centerObj.x = canvas.width - centerObj.size;
-  }
+  //   if (centerObj.x + centerObj.size > canvas.width) {
+  //     centerObj.x = canvas.width - centerObj.size;
+  //   }
 
-  if (centerObj.x - centerObj.size < 0) {
-    centerObj.x = centerObj.size;
-  }
+  //   if (centerObj.x - centerObj.size < 0) {
+  //     centerObj.x = centerObj.size;
+  //   }
 
-  if (centerObj.y + centerObj.size > canvas.height) {
-    centerObj.y = canvas.height - centerObj.size;
-  }
+  //   if (centerObj.y + centerObj.size > canvas.height) {
+  //     centerObj.y = canvas.height - centerObj.size;
+  //   }
 
-  if (centerObj.y - centerObj.size < 0) {
-    centerObj.y = centerObj.size;
-  }
+  //   if (centerObj.y - centerObj.size < 0) {
+  //     centerObj.y = centerObj.size;
+  //   }
 };
 
 const draw = () => {
@@ -78,32 +78,57 @@ const update = () => {
 
 update();
 
-const keyDown = (event) => {
-  if (event.keyCode == '39') {
-    centerObj.dx = centerObj.movementUnit;
-    //right
-  } else if (event.keyCode == '37') {
-    centerObj.dx = -centerObj.movementUnit;
-    //left
-  } else if (event.keyCode == '38') {
-    centerObj.dy = -centerObj.movementUnit;
-    //up
-  } else if (event.keyCode == '40') {
-    centerObj.dy = centerObj.movementUnit;
-    //dowm
-  }
-};
+// const keyDown = (event) => {
+//   if (event.keyCode == '39') {
+//     centerObj.dx = centerObj.movementUnit;
+//     //bouncing off
+//     if (
+//       centerObj.x + centerObj.size > canvas.width ||
+//       centerObj.x - centerObj.size < 0
+//     ) {
+//       centerObj.dx *= -1;
+//     }
+//     //right
+//   } else if (event.keyCode == '37') {
+//     centerObj.dx = -centerObj.movementUnit;
+//     if (
+//       centerObj.x + centerObj.size > canvas.width ||
+//       centerObj.x - centerObj.size < 0
+//     ) {
+//       centerObj.dx *= -1;
+//     }
+//     //left
+//   } else if (event.keyCode == '38') {
+//     centerObj.dy = -centerObj.movementUnit;
+//     if (
+//       centerObj.y + centerObj.size > canvas.height ||
+//       centerObj.y - centerObj.size < 0
+//     ) {
+//       centerObj.dy *= -1;
+//     }
+//     //up
+//   } else if (event.keyCode == '40') {
+//     centerObj.dy = centerObj.movementUnit;
+//     if (
+//       centerObj.y + centerObj.size > canvas.height ||
+//       centerObj.y - centerObj.size < 0
+//     ) {
+//       centerObj.dy *= -1;
+//     }
+//     //dowm
+//   }
+// };
 
-const keyUp = (event) => {
-  if (event.keyCode == '39' || event.keyCode == '37') {
-    centerObj.dx = 0;
-  } else if (event.keyCode == '40' || event.keyCode == '38') {
-    centerObj.dy = 0;
-  }
-};
+// const keyUp = (event) => {
+//   if (event.keyCode == '39' || event.keyCode == '37') {
+//     centerObj.dx = 0;
+//   } else if (event.keyCode == '40' || event.keyCode == '38') {
+//     centerObj.dy = 0;
+//   }
+// };
 
-document.addEventListener('keydown', keyDown);
-document.addEventListener('keyup', keyUp);
+// document.addEventListener('keydown', keyDown);
+// document.addEventListener('keyup', keyUp);
 
 //continuous movement meanse removing mouseup event listeners
 rightBtn.addEventListener('mousedown', () => {
@@ -111,6 +136,10 @@ rightBtn.addEventListener('mousedown', () => {
 });
 
 rightBtn.addEventListener('mouseup', () => {
+  centerObj.dx = 0;
+});
+
+rightBtn.addEventListener('mouseleave', () => {
   centerObj.dx = 0;
 });
 
@@ -122,6 +151,10 @@ leftBtn.addEventListener('mouseup', () => {
   centerObj.dx = 0;
 });
 
+leftBtn.addEventListener('mouseleave', () => {
+  centerObj.dx = 0;
+});
+
 upBtn.addEventListener('mousedown', () => {
   centerObj.dy = -centerObj.movementUnit;
 });
@@ -130,10 +163,18 @@ upBtn.addEventListener('mouseup', () => {
   centerObj.dy = 0;
 });
 
+upBtn.addEventListener('mouseleave', () => {
+  centerObj.dy = 0;
+});
+
 downBtn.addEventListener('mousedown', () => {
   centerObj.dy = centerObj.movementUnit;
 });
 
 downBtn.addEventListener('mouseup', () => {
+  centerObj.dy = 0;
+});
+
+downBtn.addEventListener('mouseleave', () => {
   centerObj.dy = 0;
 });
