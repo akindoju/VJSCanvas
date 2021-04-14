@@ -30,19 +30,19 @@ const moveCenterObj = () => {
   //wall detection
 
   //ball bounce
-  //   if (
-  //     centerObj.x + centerObj.size > canvas.width ||
-  //     centerObj.x - centerObj.size < 0
-  //   ) {
-  //     centerObj.dx *= -1;
-  //   }
+  if (
+    centerObj.x + centerObj.size > canvas.width ||
+    centerObj.x - centerObj.size < 0
+  ) {
+    centerObj.dx *= -1;
+  }
 
-  //   if (
-  //     centerObj.y + centerObj.size > canvas.height ||
-  //     centerObj.y - centerObj.size < 0
-  //   ) {
-  //     centerObj.dy *= -1;
-  //   }
+  if (
+    centerObj.y + centerObj.size > canvas.height ||
+    centerObj.y - centerObj.size < 0
+  ) {
+    centerObj.dy *= -1;
+  }
 
   //ball stop
   if (centerObj.x + centerObj.size > canvas.width) {
@@ -105,35 +105,35 @@ const keyUp = (event) => {
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
 
-rightBtn.addEventListener('click', () => {
-  centerObj.x += centerObj.movementUnit * 8;
+//continuous movement meanse removing mouseup event listeners
+rightBtn.addEventListener('mousedown', () => {
+  centerObj.dx = centerObj.movementUnit;
 });
 
-leftBtn.addEventListener('click', () => {
-  centerObj.x -= centerObj.movementUnit * 8;
+rightBtn.addEventListener('mouseup', () => {
+  centerObj.dx = 0;
 });
 
-upBtn.addEventListener('click', () => {
-  centerObj.y -= centerObj.movementUnit * 8;
+leftBtn.addEventListener('mousedown', () => {
+  centerObj.dx = -centerObj.movementUnit;
 });
 
-downBtn.addEventListener('click', () => {
-  centerObj.y += centerObj.movementUnit * 8;
+leftBtn.addEventListener('mouseup', () => {
+  centerObj.dx = 0;
 });
 
-//continuous movement
-// rightBtn.addEventListener('click', () => {
-//   centerObj.dx = centerObj.movementUnit;
-// });
+upBtn.addEventListener('mousedown', () => {
+  centerObj.dy = -centerObj.movementUnit;
+});
 
-// leftBtn.addEventListener('click', () => {
-//   centerObj.dx = -centerObj.movementUnit;
-// });
+upBtn.addEventListener('mouseup', () => {
+  centerObj.dy = 0;
+});
 
-// upBtn.addEventListener('click', () => {
-//   centerObj.dy = -centerObj.movementUnit;
-// });
+downBtn.addEventListener('mousedown', () => {
+  centerObj.dy = centerObj.movementUnit;
+});
 
-// downBtn.addEventListener('click', () => {
-//   centerObj.dy = centerObj.movementUnit;
-// });
+downBtn.addEventListener('mouseup', () => {
+  centerObj.dy = 0;
+});
