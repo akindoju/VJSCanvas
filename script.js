@@ -2,17 +2,19 @@ const upBtn = document.getElementById('up');
 const downBtn = document.getElementById('down');
 const leftBtn = document.getElementById('left');
 const rightBtn = document.getElementById('right');
+const centerBtn = document.getElementById('center');
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+//initial ball params
 const centerObj = {
-  x: canvas.width / 2,
-  y: canvas.height / 2,
+  x: canvas.width / 2, //position on horizontal axis
+  y: canvas.height / 2, //position on vertical axis
   size: 60,
   movementUnit: 8,
-  dy: 0,
-  dx: 0,
+  dy: 0, //automatic movement position on vertical axis
+  dx: 0, //automatic movement position on horizontal axis
 };
 
 const drawCenterObj = () => {
@@ -24,7 +26,7 @@ const drawCenterObj = () => {
 };
 
 const moveCenterObj = () => {
-  centerObj.x += centerObj.dx;
+  centerObj.x += centerObj.dx; //centerOnj.x = centerObj.x + centerObj.dx
   centerObj.y += centerObj.dy;
 
   //wall detection
@@ -34,7 +36,7 @@ const moveCenterObj = () => {
     centerObj.x + centerObj.size > canvas.width ||
     centerObj.x - centerObj.size < 0
   ) {
-    centerObj.dx *= -1;
+    centerObj.dx *= -1; //bouce back, if = 0, ball stops at canvas sides
   }
 
   if (
@@ -78,7 +80,8 @@ const update = () => {
 
 update();
 
-//keyboard buttons
+// keyboard buttons
+
 // const keyDown = (event) => {
 //   if (event.keyCode == '39') {
 //     centerObj.dx = centerObj.movementUnit;
@@ -131,51 +134,62 @@ update();
 // document.addEventListener('keydown', keyDown);
 // document.addEventListener('keyup', keyUp);
 
-//continuous movement meanse removing mouseup event listeners
+//continuous movement means removing mouseUp and mouseLeave event listeners
+
 rightBtn.addEventListener('mousedown', () => {
   centerObj.dx = centerObj.movementUnit;
 });
 
-rightBtn.addEventListener('mouseup', () => {
-  centerObj.dx = 0;
-});
+// rightBtn.addEventListener('mouseup', () => {
+//   centerObj.dx = 0;
+// });
 
-rightBtn.addEventListener('mouseleave', () => {
-  centerObj.dx = 0;
-});
+// rightBtn.addEventListener('mouseleave', () => {
+//   centerObj.dx = 0;
+// });
 
 leftBtn.addEventListener('mousedown', () => {
   centerObj.dx = -centerObj.movementUnit;
 });
 
-leftBtn.addEventListener('mouseup', () => {
-  centerObj.dx = 0;
-});
+// leftBtn.addEventListener('mouseup', () => {
+//   centerObj.dx = 0;
+// });
 
-leftBtn.addEventListener('mouseleave', () => {
-  centerObj.dx = 0;
-});
+// leftBtn.addEventListener('mouseleave', () => {
+//   centerObj.dx = 0;
+// });
 
 upBtn.addEventListener('mousedown', () => {
   centerObj.dy = -centerObj.movementUnit;
 });
 
-upBtn.addEventListener('mouseup', () => {
-  centerObj.dy = 0;
-});
+// upBtn.addEventListener('mouseup', () => {
+//   centerObj.dy = 0;
+// });
 
-upBtn.addEventListener('mouseleave', () => {
-  centerObj.dy = 0;
-});
+// upBtn.addEventListener('mouseleave', () => {
+//   centerObj.dy = 0;
+// });
 
 downBtn.addEventListener('mousedown', () => {
   centerObj.dy = centerObj.movementUnit;
 });
 
-downBtn.addEventListener('mouseup', () => {
-  centerObj.dy = 0;
-});
+// downBtn.addEventListener('mouseup', () => {
+//   centerObj.dy = 0;
+// });
 
-downBtn.addEventListener('mouseleave', () => {
-  centerObj.dy = 0;
+// downBtn.addEventListener('mouseleave', () => {
+//   centerObj.dy = 0;
+// });
+
+//move ball back to center
+centerBtn.addEventListener('click', () => {
+  {
+    centerObj.dy = 0;
+    centerObj.dx = 0;
+    centerObj.x = canvas.width / 2;
+    centerObj.y = canvas.height / 2;
+  }
 });

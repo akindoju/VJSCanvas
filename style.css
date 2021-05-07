@@ -17,7 +17,7 @@ body {
   position: relative;
 }
 
-.btn {
+.btnContainer {
   position: absolute;
   bottom: 30px;
   left: 20px;
@@ -27,8 +27,8 @@ body {
   cursor: pointer;
   font-size: 20px;
   position: absolute;
-  top: -70px;
-  left: 35px;
+  top: -90px;
+  left: 55px;
 }
 
 .btn--down {
@@ -36,21 +36,29 @@ body {
   font-size: 20px;
   position: absolute;
   top: -10px;
-  left: 35px;
+  left: 55px;
 }
 
 .btn--left {
   cursor: pointer;
   font-size: 20px;
   position: absolute;
-  top: -40px;
-  left: -10px;
+  top: -50px;
+  left: 5px;
 }
 
 .btn--right {
   cursor: pointer;
   font-size: 20px;
   position: absolute;
-  top: -40px;
-  left: 70px;
+  top: -50px;
+  left: 95px;
+}
+
+.btn--center {
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: -50px;
+  left: 52px;
 }
